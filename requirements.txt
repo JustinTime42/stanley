@@ -1,0 +1,54 @@
+# Core dependencies
+pydantic>=2.0.0
+python-dotenv>=1.0.0
+
+# Redis dependencies
+redis[hiredis]>=5.0.0
+
+# Qdrant dependencies
+qdrant-client>=1.7.0
+
+# LangChain dependencies
+langchain>=0.1.0
+langchain-core>=0.1.0
+langchain-qdrant>=0.1.0
+
+# LangGraph dependencies
+langgraph>=0.0.20
+langgraph-checkpoint>=0.0.1
+
+# Embedding and LLM dependencies
+openai>=1.0.0  # For embeddings and optional LLM
+tiktoken>=0.5.0  # For token counting
+
+# Testing dependencies
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+pytest-cov>=4.1.0
+pytest-mock>=3.11.0
+
+# Code quality
+ruff>=0.1.0
+mypy>=1.5.0
+black>=23.0.0
+
+# Utilities
+aiohttp>=3.9.0
+asyncio>=3.4.3
+httpx>=0.25.0  # For Ollama and OpenRouter providers
+
+# Tool dependencies
+aiofiles>=23.0.0  # Async file operations
+psutil>=5.9.0  # Resource monitoring
+GitPython>=3.1.0  # Git operations
+rich>=13.0.0  # Progress bars and formatting
+
+# Code analysis dependencies
+tree-sitter>=0.20.0  # AST parsing
+tree-sitter-language-pack>=0.1.0  # Pre-compiled language grammars (Python, JS, TS, Java, Go)
+
+# Browser automation dependencies
+playwright>=1.40.0  # Browser automation
+Pillow>=10.0.0  # Image processing for visual regression
+numpy>=1.24.0  # Array operations for image comparison
+pytest-playwright>=0.4.0  # Pytest integration for Playwright

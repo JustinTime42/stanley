@@ -1,0 +1,89 @@
+{
+  "report_id": "TEST-001",
+  "timestamp": "2025-11-23T21:31:06.336930",
+  "status": {
+    "overall": "passed",
+    "passed": true,
+    "trend": "improving"
+  },
+  "coverage": {
+    "line": {
+      "percentage": 85.5,
+      "covered": 171,
+      "total": 200,
+      "files": {}
+    },
+    "branch": {
+      "percentage": 78.3,
+      "covered": 94,
+      "total": 120,
+      "files": {}
+    },
+    "summary": {
+      "average_coverage": 81.9,
+      "types_analyzed": 2
+    }
+  },
+  "security": {
+    "security_score": 95.0,
+    "total_issues": 1,
+    "issues_by_severity": {
+      "medium": {
+        "count": 1,
+        "issues": [
+          {
+            "issue_id": "SEC-001",
+            "type": "Potential SQL Injection",
+            "description": "User input is concatenated directly into SQL query",
+            "severity": "medium",
+            "confidence": "High",
+            "location": {
+              "file": "src/example.py",
+              "line": 42,
+              "column": null
+            },
+            "remediation": "Use parameterized queries or an ORM",
+            "references": {
+              "cwe_id": "CWE-89",
+              "owasp_category": null,
+              "links": []
+            }
+          }
+        ]
+      }
+    },
+    "summary": {
+      "critical": 0,
+      "high": 0,
+      "medium": 1,
+      "low": 0,
+      "info": 0
+    }
+  },
+  "static_analysis": {
+    "code_quality_score": 88.5,
+    "total_issues": 0,
+    "issues": []
+  },
+  "performance": {
+    "total_regressions": 0,
+    "metrics_analyzed": 0,
+    "regressions": [],
+    "all_metrics": []
+  },
+  "complexity": {
+    "cyclomatic_complexity": 8.5,
+    "cognitive_complexity": 12.0,
+    "maintainability_index": 82.0
+  },
+  "violations": [],
+  "recommendations": [
+    "Increase branch coverage to 80% or higher",
+    "Review cyclomatic complexity in module X",
+    "Add integration tests for API endpoints"
+  ],
+  "metadata": {
+    "previous_score": null,
+    "generation_timestamp": "2025-11-23T21:31:06.339431"
+  }
+}

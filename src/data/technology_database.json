@@ -1,0 +1,473 @@
+{
+  "technologies": [
+    {
+      "name": "Python",
+      "category": "language",
+      "version": "3.11+",
+      "license": "PSF",
+      "maturity": "adopt",
+      "learning_curve": 0.3,
+      "community_size": "large",
+      "documentation_quality": 0.9,
+      "suitability_scores": {
+        "web_development": 0.9,
+        "data_science": 0.95,
+        "automation": 0.9,
+        "api_development": 0.9,
+        "machine_learning": 0.95,
+        "performance": 0.6
+      },
+      "compatible_with": ["FastAPI", "Django", "Flask", "PostgreSQL", "Redis", "Docker"],
+      "incompatible_with": [],
+      "licensing_cost": 0.0,
+      "operational_cost": 0.0
+    },
+    {
+      "name": "JavaScript",
+      "category": "language",
+      "version": "ES2022",
+      "license": "MIT",
+      "maturity": "adopt",
+      "learning_curve": 0.4,
+      "community_size": "large",
+      "documentation_quality": 0.85,
+      "suitability_scores": {
+        "web_development": 0.95,
+        "frontend": 0.95,
+        "backend": 0.8,
+        "real_time": 0.9
+      },
+      "compatible_with": ["React", "Node.js", "Express", "MongoDB"],
+      "incompatible_with": [],
+      "licensing_cost": 0.0,
+      "operational_cost": 0.0
+    },
+    {
+      "name": "TypeScript",
+      "category": "language",
+      "version": "5.0+",
+      "license": "Apache 2.0",
+      "maturity": "adopt",
+      "learning_curve": 0.5,
+      "community_size": "large",
+      "documentation_quality": 0.9,
+      "suitability_scores": {
+        "web_development": 0.95,
+        "frontend": 0.95,
+        "backend": 0.85,
+        "type_safety": 0.95
+      },
+      "compatible_with": ["React", "Node.js", "Angular", "Vue"],
+      "incompatible_with": [],
+      "licensing_cost": 0.0,
+      "operational_cost": 0.0
+    },
+    {
+      "name": "Go",
+      "category": "language",
+      "version": "1.21+",
+      "license": "BSD",
+      "maturity": "adopt",
+      "learning_curve": 0.4,
+      "community_size": "large",
+      "documentation_quality": 0.85,
+      "suitability_scores": {
+        "microservices": 0.95,
+        "performance": 0.9,
+        "concurrency": 0.95,
+        "cloud_native": 0.9
+      },
+      "compatible_with": ["Docker", "Kubernetes", "gRPC"],
+      "incompatible_with": [],
+      "licensing_cost": 0.0,
+      "operational_cost": 0.0
+    },
+    {
+      "name": "Rust",
+      "category": "language",
+      "version": "1.70+",
+      "license": "Apache 2.0",
+      "maturity": "trial",
+      "learning_curve": 0.8,
+      "community_size": "medium",
+      "documentation_quality": 0.85,
+      "suitability_scores": {
+        "performance": 0.95,
+        "safety": 0.95,
+        "systems_programming": 0.95,
+        "concurrency": 0.9
+      },
+      "compatible_with": ["WebAssembly", "Docker"],
+      "incompatible_with": [],
+      "licensing_cost": 0.0,
+      "operational_cost": 0.0
+    },
+    {
+      "name": "FastAPI",
+      "category": "web_framework",
+      "version": "0.100+",
+      "license": "MIT",
+      "maturity": "adopt",
+      "learning_curve": 0.4,
+      "community_size": "large",
+      "documentation_quality": 0.9,
+      "suitability_scores": {
+        "api_development": 0.95,
+        "async_processing": 0.9,
+        "microservices": 0.85,
+        "documentation": 0.95
+      },
+      "compatible_with": ["Python", "PostgreSQL", "Redis", "Docker"],
+      "incompatible_with": [],
+      "licensing_cost": 0.0,
+      "operational_cost": 0.0
+    },
+    {
+      "name": "Django",
+      "category": "web_framework",
+      "version": "4.2+",
+      "license": "BSD",
+      "maturity": "adopt",
+      "learning_curve": 0.5,
+      "community_size": "large",
+      "documentation_quality": 0.95,
+      "suitability_scores": {
+        "web_development": 0.9,
+        "admin_interface": 0.95,
+        "orm": 0.9,
+        "batteries_included": 0.95
+      },
+      "compatible_with": ["Python", "PostgreSQL", "Redis"],
+      "incompatible_with": [],
+      "licensing_cost": 0.0,
+      "operational_cost": 0.0
+    },
+    {
+      "name": "React",
+      "category": "frontend_framework",
+      "version": "18+",
+      "license": "MIT",
+      "maturity": "adopt",
+      "learning_curve": 0.5,
+      "community_size": "large",
+      "documentation_quality": 0.85,
+      "suitability_scores": {
+        "frontend": 0.95,
+        "spa": 0.9,
+        "component_based": 0.95
+      },
+      "compatible_with": ["TypeScript", "JavaScript", "Node.js"],
+      "incompatible_with": [],
+      "licensing_cost": 0.0,
+      "operational_cost": 0.0
+    },
+    {
+      "name": "Vue",
+      "category": "frontend_framework",
+      "version": "3+",
+      "license": "MIT",
+      "maturity": "adopt",
+      "learning_curve": 0.4,
+      "community_size": "large",
+      "documentation_quality": 0.9,
+      "suitability_scores": {
+        "frontend": 0.9,
+        "spa": 0.9,
+        "progressive": 0.95
+      },
+      "compatible_with": ["TypeScript", "JavaScript"],
+      "incompatible_with": [],
+      "licensing_cost": 0.0,
+      "operational_cost": 0.0
+    },
+    {
+      "name": "PostgreSQL",
+      "category": "database",
+      "version": "15+",
+      "license": "PostgreSQL",
+      "maturity": "adopt",
+      "learning_curve": 0.4,
+      "community_size": "large",
+      "documentation_quality": 0.85,
+      "suitability_scores": {
+        "relational_data": 0.95,
+        "scalability": 0.8,
+        "reliability": 0.9,
+        "json_support": 0.85
+      },
+      "compatible_with": ["Python", "FastAPI", "Django", "Docker"],
+      "incompatible_with": [],
+      "licensing_cost": 0.0,
+      "operational_cost": 100.0
+    },
+    {
+      "name": "MongoDB",
+      "category": "database",
+      "version": "6+",
+      "license": "SSPL",
+      "maturity": "adopt",
+      "learning_curve": 0.3,
+      "community_size": "large",
+      "documentation_quality": 0.85,
+      "suitability_scores": {
+        "document_storage": 0.95,
+        "scalability": 0.9,
+        "flexibility": 0.9
+      },
+      "compatible_with": ["JavaScript", "Node.js", "Python"],
+      "incompatible_with": [],
+      "licensing_cost": 0.0,
+      "operational_cost": 150.0
+    },
+    {
+      "name": "Redis",
+      "category": "cache",
+      "version": "7+",
+      "license": "BSD",
+      "maturity": "adopt",
+      "learning_curve": 0.3,
+      "community_size": "large",
+      "documentation_quality": 0.8,
+      "suitability_scores": {
+        "caching": 0.95,
+        "real_time": 0.9,
+        "scalability": 0.85,
+        "session_storage": 0.9
+      },
+      "compatible_with": ["Python", "FastAPI", "Node.js", "Docker"],
+      "incompatible_with": [],
+      "licensing_cost": 0.0,
+      "operational_cost": 50.0
+    },
+    {
+      "name": "Docker",
+      "category": "containerization",
+      "version": "24+",
+      "license": "Apache 2.0",
+      "maturity": "adopt",
+      "learning_curve": 0.5,
+      "community_size": "large",
+      "documentation_quality": 0.85,
+      "suitability_scores": {
+        "deployment": 0.9,
+        "microservices": 0.95,
+        "devops": 0.9,
+        "consistency": 0.95
+      },
+      "compatible_with": ["Kubernetes", "Python", "FastAPI", "PostgreSQL"],
+      "incompatible_with": [],
+      "licensing_cost": 0.0,
+      "operational_cost": 0.0
+    },
+    {
+      "name": "Kubernetes",
+      "category": "orchestration",
+      "version": "1.27+",
+      "license": "Apache 2.0",
+      "maturity": "adopt",
+      "learning_curve": 0.7,
+      "community_size": "large",
+      "documentation_quality": 0.8,
+      "suitability_scores": {
+        "orchestration": 0.95,
+        "microservices": 0.95,
+        "scalability": 0.95,
+        "high_availability": 0.9
+      },
+      "compatible_with": ["Docker", "Go", "Helm"],
+      "incompatible_with": [],
+      "licensing_cost": 0.0,
+      "operational_cost": 500.0
+    },
+    {
+      "name": "AWS",
+      "category": "cloud_platform",
+      "version": "N/A",
+      "license": "Proprietary",
+      "maturity": "adopt",
+      "learning_curve": 0.6,
+      "community_size": "large",
+      "documentation_quality": 0.85,
+      "suitability_scores": {
+        "cloud": 0.95,
+        "scalability": 0.95,
+        "services_variety": 0.95
+      },
+      "compatible_with": ["Docker", "Kubernetes", "Terraform"],
+      "incompatible_with": [],
+      "licensing_cost": 0.0,
+      "operational_cost": 1000.0
+    },
+    {
+      "name": "GraphQL",
+      "category": "api_technology",
+      "version": "N/A",
+      "license": "MIT",
+      "maturity": "adopt",
+      "learning_curve": 0.5,
+      "community_size": "large",
+      "documentation_quality": 0.85,
+      "suitability_scores": {
+        "api_design": 0.9,
+        "flexibility": 0.95,
+        "frontend_optimization": 0.9
+      },
+      "compatible_with": ["JavaScript", "TypeScript", "Python"],
+      "incompatible_with": [],
+      "licensing_cost": 0.0,
+      "operational_cost": 0.0
+    },
+    {
+      "name": "gRPC",
+      "category": "api_technology",
+      "version": "1.50+",
+      "license": "Apache 2.0",
+      "maturity": "adopt",
+      "learning_curve": 0.6,
+      "community_size": "large",
+      "documentation_quality": 0.8,
+      "suitability_scores": {
+        "microservices": 0.95,
+        "performance": 0.95,
+        "streaming": 0.9
+      },
+      "compatible_with": ["Go", "Python", "Kubernetes"],
+      "incompatible_with": [],
+      "licensing_cost": 0.0,
+      "operational_cost": 0.0
+    },
+    {
+      "name": "RabbitMQ",
+      "category": "message_queue",
+      "version": "3.12+",
+      "license": "MPL 2.0",
+      "maturity": "adopt",
+      "learning_curve": 0.5,
+      "community_size": "large",
+      "documentation_quality": 0.8,
+      "suitability_scores": {
+        "messaging": 0.9,
+        "async_processing": 0.9,
+        "reliability": 0.85
+      },
+      "compatible_with": ["Python", "Docker"],
+      "incompatible_with": [],
+      "licensing_cost": 0.0,
+      "operational_cost": 100.0
+    },
+    {
+      "name": "Kafka",
+      "category": "message_queue",
+      "version": "3.5+",
+      "license": "Apache 2.0",
+      "maturity": "adopt",
+      "learning_curve": 0.7,
+      "community_size": "large",
+      "documentation_quality": 0.8,
+      "suitability_scores": {
+        "event_streaming": 0.95,
+        "high_throughput": 0.95,
+        "scalability": 0.9
+      },
+      "compatible_with": ["Python", "Java", "Docker"],
+      "incompatible_with": [],
+      "licensing_cost": 0.0,
+      "operational_cost": 200.0
+    },
+    {
+      "name": "Elasticsearch",
+      "category": "search_engine",
+      "version": "8+",
+      "license": "Elastic License",
+      "maturity": "adopt",
+      "learning_curve": 0.6,
+      "community_size": "large",
+      "documentation_quality": 0.85,
+      "suitability_scores": {
+        "search": 0.95,
+        "analytics": 0.9,
+        "logging": 0.9
+      },
+      "compatible_with": ["Python", "Docker", "Kibana"],
+      "incompatible_with": [],
+      "licensing_cost": 0.0,
+      "operational_cost": 300.0
+    },
+    {
+      "name": "Nginx",
+      "category": "web_server",
+      "version": "1.24+",
+      "license": "BSD",
+      "maturity": "adopt",
+      "learning_curve": 0.4,
+      "community_size": "large",
+      "documentation_quality": 0.8,
+      "suitability_scores": {
+        "reverse_proxy": 0.95,
+        "load_balancing": 0.9,
+        "performance": 0.9
+      },
+      "compatible_with": ["Docker", "FastAPI", "Django"],
+      "incompatible_with": [],
+      "licensing_cost": 0.0,
+      "operational_cost": 0.0
+    },
+    {
+      "name": "Terraform",
+      "category": "infrastructure_as_code",
+      "version": "1.5+",
+      "license": "MPL 2.0",
+      "maturity": "adopt",
+      "learning_curve": 0.5,
+      "community_size": "large",
+      "documentation_quality": 0.85,
+      "suitability_scores": {
+        "infrastructure": 0.95,
+        "cloud": 0.95,
+        "automation": 0.9
+      },
+      "compatible_with": ["AWS", "Docker", "Kubernetes"],
+      "incompatible_with": [],
+      "licensing_cost": 0.0,
+      "operational_cost": 0.0
+    },
+    {
+      "name": "Prometheus",
+      "category": "monitoring",
+      "version": "2.45+",
+      "license": "Apache 2.0",
+      "maturity": "adopt",
+      "learning_curve": 0.5,
+      "community_size": "large",
+      "documentation_quality": 0.8,
+      "suitability_scores": {
+        "monitoring": 0.95,
+        "metrics": 0.95,
+        "alerting": 0.85
+      },
+      "compatible_with": ["Kubernetes", "Docker", "Grafana"],
+      "incompatible_with": [],
+      "licensing_cost": 0.0,
+      "operational_cost": 50.0
+    },
+    {
+      "name": "Grafana",
+      "category": "visualization",
+      "version": "10+",
+      "license": "AGPL",
+      "maturity": "adopt",
+      "learning_curve": 0.4,
+      "community_size": "large",
+      "documentation_quality": 0.85,
+      "suitability_scores": {
+        "visualization": 0.95,
+        "dashboards": 0.95,
+        "monitoring": 0.9
+      },
+      "compatible_with": ["Prometheus", "Elasticsearch"],
+      "incompatible_with": [],
+      "licensing_cost": 0.0,
+      "operational_cost": 50.0
+    }
+  ]
+}

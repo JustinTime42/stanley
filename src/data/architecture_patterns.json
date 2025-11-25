@@ -1,0 +1,280 @@
+{
+  "patterns": [
+    {
+      "name": "Layered Architecture",
+      "pattern_type": "layered",
+      "description": "Organize system into horizontal layers with clear separation of concerns",
+      "when_to_use": [
+        "Need clear separation between UI, business logic, and data",
+        "Team organized by technical expertise",
+        "Standard enterprise application",
+        "Maintainability is a priority"
+      ],
+      "when_not_to_use": [
+        "Need high scalability and independent deployment",
+        "Microservices architecture required",
+        "Performance is critical concern"
+      ],
+      "structure": {
+        "layers": ["presentation", "business", "data"],
+        "rules": [
+          "Dependencies flow downward only",
+          "Each layer has specific responsibilities",
+          "Layers communicate through well-defined interfaces"
+        ]
+      },
+      "benefits": [
+        "Clear separation of concerns",
+        "Easy to understand and maintain",
+        "Team can specialize by layer",
+        "Good for traditional applications"
+      ],
+      "drawbacks": [
+        "Can lead to monolithic architecture",
+        "Performance overhead from layer crossings",
+        "Changes may require modifications across layers"
+      ],
+      "examples": [
+        "Traditional web applications",
+        "Enterprise systems",
+        "CRUD applications"
+      ],
+      "related_patterns": ["clean", "onion"]
+    },
+    {
+      "name": "Microservices",
+      "pattern_type": "microservices",
+      "description": "Decompose application into small, independent services",
+      "when_to_use": [
+        "Need independent deployment and scaling",
+        "Large team that can be organized into smaller units",
+        "Different parts require different technologies",
+        "High availability required"
+      ],
+      "when_not_to_use": [
+        "Small application or team",
+        "No need for independent scaling",
+        "Distributed systems expertise lacking",
+        "Simple CRUD operations"
+      ],
+      "structure": {
+        "components": ["independent services", "API gateway", "service discovery", "message bus"],
+        "communication": ["REST APIs", "message queues", "events"]
+      },
+      "benefits": [
+        "Independent deployment and scaling",
+        "Technology diversity",
+        "Team autonomy",
+        "Fault isolation"
+      ],
+      "drawbacks": [
+        "Operational complexity",
+        "Distributed system challenges",
+        "Testing complexity",
+        "Data consistency challenges"
+      ],
+      "examples": [
+        "Netflix",
+        "Amazon",
+        "Uber"
+      ],
+      "related_patterns": ["event_driven", "service_oriented"]
+    },
+    {
+      "name": "Event-Driven Architecture",
+      "pattern_type": "event_driven",
+      "description": "Components communicate through events and event handlers",
+      "when_to_use": [
+        "Loose coupling between components needed",
+        "Asynchronous processing required",
+        "Real-time data processing",
+        "Event sourcing benefits desired"
+      ],
+      "when_not_to_use": [
+        "Simple CRUD operations",
+        "Strict consistency required",
+        "Debugging simplicity is priority"
+      ],
+      "structure": {
+        "components": ["event producers", "event bus", "event consumers", "event store"],
+        "patterns": ["pub-sub", "event sourcing", "CQRS"]
+      },
+      "benefits": [
+        "Loose coupling",
+        "Scalability",
+        "Real-time processing",
+        "Natural audit log"
+      ],
+      "drawbacks": [
+        "Eventual consistency",
+        "Debugging difficulty",
+        "Event schema management",
+        "Complexity in error handling"
+      ],
+      "examples": [
+        "Real-time analytics",
+        "IoT systems",
+        "Stock trading platforms"
+      ],
+      "related_patterns": ["event_sourcing", "cqrs", "microservices"]
+    },
+    {
+      "name": "Clean Architecture",
+      "pattern_type": "clean",
+      "description": "Organize code with business logic at the center, dependencies pointing inward",
+      "when_to_use": [
+        "Business logic should be framework-independent",
+        "Testability is critical",
+        "Long-term maintainability required",
+        "Multiple UI or delivery mechanisms"
+      ],
+      "when_not_to_use": [
+        "Simple applications",
+        "Rapid prototyping",
+        "Team unfamiliar with the pattern"
+      ],
+      "structure": {
+        "layers": ["entities", "use_cases", "interface_adapters", "frameworks"],
+        "rules": [
+          "Dependencies point inward",
+          "Business logic independent of frameworks",
+          "Testable without external dependencies"
+        ]
+      },
+      "benefits": [
+        "Framework independence",
+        "Highly testable",
+        "Business logic isolation",
+        "Flexibility in technology choices"
+      ],
+      "drawbacks": [
+        "Initial complexity",
+        "More files and abstractions",
+        "Learning curve for team"
+      ],
+      "examples": [
+        "Domain-driven design applications",
+        "Long-lived systems",
+        "Multi-platform applications"
+      ],
+      "related_patterns": ["hexagonal", "onion", "layered"]
+    },
+    {
+      "name": "Repository Pattern",
+      "pattern_type": "repository",
+      "description": "Abstracts data access logic behind a repository interface",
+      "when_to_use": [
+        "Multiple data sources",
+        "Need to swap data access implementations",
+        "Domain-driven design",
+        "Testability of business logic"
+      ],
+      "when_not_to_use": [
+        "Simple CRUD with single data source",
+        "ORM provides sufficient abstraction",
+        "Performance is critical"
+      ],
+      "structure": {
+        "components": ["repository interface", "concrete repositories", "data entities"],
+        "patterns": ["unit of work", "specification"]
+      },
+      "benefits": [
+        "Separation of concerns",
+        "Easy to swap implementations",
+        "Testable business logic",
+        "Centralized data access logic"
+      ],
+      "drawbacks": [
+        "Abstraction overhead",
+        "Can be over-engineering for simple cases",
+        "Performance impact"
+      ],
+      "examples": [
+        "DDD applications",
+        "Multi-database systems",
+        "Applications with complex querying"
+      ],
+      "related_patterns": ["layered", "clean", "domain_driven"]
+    },
+    {
+      "name": "CQRS",
+      "pattern_type": "cqrs",
+      "description": "Separate read and write models for different optimization and scaling",
+      "when_to_use": [
+        "Read and write workloads very different",
+        "Complex domain with different read/write needs",
+        "Event sourcing is used",
+        "High scalability required"
+      ],
+      "when_not_to_use": [
+        "Simple CRUD operations",
+        "Read and write patterns similar",
+        "Team unfamiliar with pattern",
+        "Eventual consistency not acceptable"
+      ],
+      "structure": {
+        "components": ["command model", "query model", "command handlers", "query handlers"],
+        "patterns": ["event sourcing", "eventual consistency"]
+      },
+      "benefits": [
+        "Independent scaling of reads and writes",
+        "Optimized models for each operation",
+        "Better performance",
+        "Natural fit with event sourcing"
+      ],
+      "drawbacks": [
+        "Increased complexity",
+        "Eventual consistency challenges",
+        "Code duplication",
+        "More infrastructure"
+      ],
+      "examples": [
+        "E-commerce systems",
+        "Financial systems",
+        "High-traffic applications"
+      ],
+      "related_patterns": ["event_sourcing", "event_driven", "microservices"]
+    },
+    {
+      "name": "Hexagonal Architecture",
+      "pattern_type": "hexagonal",
+      "description": "Ports and adapters pattern isolating business logic from external concerns",
+      "when_to_use": [
+        "Business logic should be framework-independent",
+        "Multiple external interfaces",
+        "Testing business logic in isolation",
+        "Flexibility in technology choices"
+      ],
+      "when_not_to_use": [
+        "Simple applications",
+        "Tight integration with specific framework",
+        "Rapid prototyping"
+      ],
+      "structure": {
+        "components": ["domain core", "ports", "adapters"],
+        "rules": [
+          "Domain is independent",
+          "Communication through ports",
+          "Adapters implement ports"
+        ]
+      },
+      "benefits": [
+        "Framework independence",
+        "Highly testable",
+        "Flexibility",
+        "Clear boundaries"
+      ],
+      "drawbacks": [
+        "More abstractions",
+        "Initial complexity",
+        "Learning curve"
+      ],
+      "examples": [
+        "Domain-driven systems",
+        "Long-lived applications",
+        "Systems with multiple interfaces"
+      ],
+      "related_patterns": ["clean", "onion", "layered"]
+    }
+  ]
+}

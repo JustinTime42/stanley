@@ -1,0 +1,203 @@
+# Quality Gate Thresholds Configuration
+# This file defines quality thresholds for the quality gate system
+# Supports hierarchical overrides: global < project < module
+
+# Global default thresholds
+global:
+  coverage:
+    line_coverage:
+      dimension: coverage
+      metric: line_coverage
+      min_value: 80.0
+      target_value: 90.0
+      enforcement: error
+      allow_override: false
+
+    branch_coverage:
+      dimension: coverage
+      metric: branch_coverage
+      min_value: 75.0
+      target_value: 85.0
+      enforcement: error
+      allow_override: false
+
+    mutation_score:
+      dimension: coverage
+      metric: mutation_score
+      min_value: 75.0
+      target_value: 85.0
+      enforcement: warning
+      allow_override: true
+
+  static:
+    code_quality_score:
+      dimension: static
+      metric: code_quality_score
+      min_value: 8.0
+      max_value: 10.0
+      target_value: 9.0
+      enforcement: error
+      allow_override: false
+
+    critical_issues:
+      dimension: static
+      metric: critical_issues
+      max_value: 0
+      enforcement: error
+      allow_override: false
+
+    high_issues:
+      dimension: static
+      metric: high_issues
+      max_value: 5
+      enforcement: warning
+      allow_override: true
+
+  security:
+    critical_vulnerabilities:
+      dimension: security
+      metric: critical_vulnerabilities
+      max_value: 0
+      enforcement: error
+      allow_override: false
+
+    high_vulnerabilities:
+      dimension: security
+      metric: high_vulnerabilities
+      max_value: 0
+      enforcement: error
+      allow_override: true
+
+    medium_vulnerabilities:
+      dimension: security
+      metric: medium_vulnerabilities
+      max_value: 5
+      enforcement: warning
+      allow_override: true
+
+  complexity:
+    cyclomatic_complexity:
+      dimension: complexity
+      metric: cyclomatic_complexity
+      max_value: 15.0
+      enforcement: warning
+      allow_override: true
+
+    cognitive_complexity:
+      dimension: complexity
+      metric: cognitive_complexity
+      max_value: 20.0
+      enforcement: warning
+      allow_override: true
+
+    maintainability_index:
+      dimension: complexity
+      metric: maintainability_index
+      min_value: 65.0
+      target_value: 85.0
+      enforcement: warning
+      allow_override: true
+
+  performance:
+    regression_threshold:
+      dimension: performance
+      metric: regression_threshold
+      max_value: 10.0  # Max 10% performance regression
+      enforcement: warning
+      allow_override: true
+
+# Project-specific overrides
+projects:
+  # Example: More strict requirements for critical services
+  core-service:
+    thresholds:
+      coverage:
+        line_coverage:
+          min_value: 90.0
+          target_value: 95.0
+          enforcement: error
+          allow_override: false
+
+        branch_coverage:
+          min_value: 85.0
+          target_value: 90.0
+          enforcement: error
+          allow_override: false
+
+      security:
+        medium_vulnerabilities:
+          max_value: 0
+          enforcement: error
+          allow_override: false
+
+  # Example: More lenient for experimental features
+  experimental:
+    thresholds:
+      coverage:
+        line_coverage:
+          min_value: 70.0
+          enforcement: warning
+          allow_override: true
+
+        mutation_score:
+          min_value: 60.0
+          enforcement: info
+          allow_override: true
+
+      complexity:
+        cyclomatic_complexity:
+          max_value: 20.0
+          enforcement: info
+          allow_override: true
+
+# Module-specific overrides (highest precedence)
+modules:
+  # Example: Legacy code with technical debt
+  legacy/payment_processor:
+    thresholds:
+      coverage:
+        line_coverage:
+          min_value: 60.0
+          enforcement: warning
+          allow_override: true
+
+        branch_coverage:
+          min_value: 50.0
+          enforcement: warning
+          allow_override: true
+
+      complexity:
+        cyclomatic_complexity:
+          max_value: 25.0
+          enforcement: info
+          allow_override: true
+
+  # Example: New security-critical module
+  security/authentication:
+    thresholds:
+      coverage:
+        line_coverage:
+          min_value: 95.0
+          enforcement: error
+          allow_override: false
+
+        branch_coverage:
+          min_value: 90.0
+          enforcement: error
+          allow_override: false
+
+      security:
+        critical_vulnerabilities:
+          max_value: 0
+          enforcement: error
+          allow_override: false
+
+        high_vulnerabilities:
+          max_value: 0
+          enforcement: error
+          allow_override: false
+
+        medium_vulnerabilities:
+          max_value: 0
+          enforcement: error
+          allow_override: false

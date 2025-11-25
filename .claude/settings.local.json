@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run lint)",
+      "Bash(mkdir:*)",
+      "Bash(npm run type-check:*)",
+      "Bash(npm run build:*)",
+      "Bash(npx tsc:*)",
+      "Read(//c/Users/justi/Code/devjourney-old/firebase/functions/src/**)",
+      "WebSearch",
+      "WebFetch(domain:www.tealhq.com)",
+      "WebFetch(domain:resumeworded.com)",
+      "WebFetch(domain:blog.hubspot.com)",
+      "WebFetch(domain:www.linkedin.com)",
+      "WebFetch(domain:www.themuse.com)",
+      "WebFetch(domain:medium.com)",
+      "WebFetch(domain:www.senseicopilot.com)",
+      "mcp__ide__getDiagnostics",
+      "WebFetch(domain:langchain-ai.github.io)",
+      "WebFetch(domain:github.com)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

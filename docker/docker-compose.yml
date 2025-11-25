@@ -1,0 +1,73 @@
+version: '3.8'
+
+services:
+  # Redis service for working memory and checkpoints
+  redis:
+    image: redis/redis-stack:latest
+    container_name: agent-swarm-redis
+    ports:
+      - "6379:6379"
+      - "8001:8001"  # Redis Insight web UI
+    volumes:
+      - ./data/redis:/data
+    environment:
+      - REDIS_ARGS=--maxmemory 2gb --maxmemory-policy allkeys-lru
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Qdrant service for project and global memory
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: agent-swarm-qdrant
+    ports:
+      - "6333:6333"  # HTTP API
+      - "6334:6334"  # gRPC API
+    volumes:
+      - ./data/qdrant:/qdrant/storage
+    environment:
+      - QDRANT__SERVICE__GRPC_PORT=6334
+      - QDRANT__LOG_LEVEL=INFO
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6333/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Optional: Agent Swarm Application (uncomment when ready)
+  # agent-swarm:
+  #   build:
+  #     context: ..
+  #     dockerfile: docker/Dockerfile
+  #   container_name: agent-swarm-app
+  #   depends_on:
+  #     redis:
+  #       condition: service_healthy
+  #     qdrant:
+  #       condition: service_healthy
+  #   environment:
+  #     - REDIS_URL=redis://redis:6379/0
+  #     - QDRANT_URL=http://qdrant:6333
+  #     - EMBEDDING_MODEL=text-embedding-ada-002
+  #     - MEMORY_TTL_WORKING=3600
+  #     - MEMORY_CACHE_SIZE=1000
+  #     - HYBRID_SEARCH_ALPHA=0.7
+  #   env_file:
+  #     - ../.env
+  #   volumes:
+  #     - ../src:/app/src
+  #   ports:
+  #     - "8000:8000"
+  #   restart: unless-stopped
+
+volumes:
+  redis-data:
+  qdrant-data:
+
+networks:
+  default:
+    name: agent-swarm-network

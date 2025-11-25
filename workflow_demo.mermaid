@@ -1,0 +1,35 @@
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	coordinator(coordinator)
+	planner(planner)
+	architect(architect)
+	validator(validator)
+	implementer(implementer)
+	tester(tester)
+	debugger(debugger)
+	__end__([<p>__end__</p>]):::last
+	__start__ --> coordinator;
+	architect -.-> implementer;
+	coordinator -. &nbsp;end&nbsp; .-> __end__;
+	coordinator -.-> architect;
+	coordinator -.-> debugger;
+	coordinator -.-> implementer;
+	coordinator -.-> planner;
+	coordinator -.-> tester;
+	coordinator -.-> validator;
+	debugger -. &nbsp;end&nbsp; .-> __end__;
+	debugger -.-> tester;
+	implementer -.-> tester;
+	planner -.-> architect;
+	tester -.-> debugger;
+	tester -.-> validator;
+	validator -. &nbsp;end&nbsp; .-> __end__;
+	validator -.-> debugger;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc

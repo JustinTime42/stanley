@@ -1,11 +1,12 @@
 """Configuration command implementation."""
 
+from pathlib import Path
 from typing import Optional
 
 from rich.table import Table
 
 from .base import BaseCommand, CommandContext
-from ..config.cli_config import save_config
+from ..config.cli_config import save_config, get_config_paths
 
 
 class ConfigCommand(BaseCommand):
@@ -78,10 +79,22 @@ class ConfigCommand(BaseCommand):
 
         context.console.print(table)
 
-        # Show config file locations
+        # Show config file locations with existence status
         context.console.print("\n[dim]Configuration files:[/dim]")
-        context.console.print("  - ~/.agent-swarm/config.yaml (user)")
-        context.console.print("  - ./.agent-swarm/config.yaml (project)")
+        config_paths = get_config_paths()
+        labels = ["user", "project"]
+        any_exists = False
+
+        for i, path in enumerate(config_paths):
+            label = labels[i] if i < len(labels) else f"config {i+1}"
+            if path.exists():
+                context.console.print(f"  [green]*[/green] {path} ({label})")
+                any_exists = True
+            else:
+                context.console.print(f"  [dim]- {path} ({label}) - not created[/dim]")
+
+        if not any_exists:
+            context.console.print("\n[dim]Using defaults. Run /config save to create a config file.[/dim]")
 
         return None
 

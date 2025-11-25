@@ -57,3 +57,6 @@ pytest-playwright>=0.4.0  # Pytest integration for Playwright
 prompt_toolkit>=3.0.0  # Interactive REPL with async support
 click>=8.0.0  # CLI argument parsing
 python-frontmatter>=1.0.0  # Custom command frontmatter parsing
+
+# File watching dependencies
+watchdog>=3.0.0  # File system watcher for codebase understanding

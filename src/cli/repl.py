@@ -218,6 +218,17 @@ class REPL:
         Returns:
             Assistant response
         """
+        # Parse input to check for commands
+        parsed = self.parser.parse(prompt)
+
+        if parsed.type == InputType.COMMAND:
+            # Handle command
+            await self._handle_command(
+                parsed.command_name or "",
+                parsed.command_args or "",
+            )
+            return ""
+
         # Add user message
         self.session.add_message("user", prompt)
 

@@ -52,3 +52,8 @@ playwright>=1.40.0  # Browser automation
 Pillow>=10.0.0  # Image processing for visual regression
 numpy>=1.24.0  # Array operations for image comparison
 pytest-playwright>=0.4.0  # Pytest integration for Playwright
+
+# CLI dependencies
+prompt_toolkit>=3.0.0  # Interactive REPL with async support
+click>=8.0.0  # CLI argument parsing
+python-frontmatter>=1.0.0  # Custom command frontmatter parsing

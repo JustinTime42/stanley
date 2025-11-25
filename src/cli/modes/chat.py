@@ -1,6 +1,8 @@
 """Chat mode for single-agent conversation."""
 
 import logging
+import os
+from pathlib import Path
 
 from .base import BaseMode
 from ...models.llm_models import LLMRequest
@@ -19,10 +21,14 @@ class ChatMode(BaseMode):
     description = "Single-agent conversational mode"
     prompt_prefix = "You: "
 
-    # Default system prompt for chat mode
+    # Default system prompt template for chat mode
     DEFAULT_SYSTEM_PROMPT = """You are a helpful AI coding assistant running in a CLI environment.
-You have access to tools for reading/writing files, running commands, and more.
+You are working in the following directory: {working_directory}
+
+{codebase_context}
+
 Be concise but thorough. Use markdown formatting for code blocks.
+When asked about the codebase, reference the files and structure shown above.
 When asked to perform tasks, break them down into clear steps."""
 
     async def process(self, message: str) -> None:
@@ -164,7 +170,7 @@ When asked to perform tasks, break them down into clear steps."""
 
     def _get_system_prompt(self) -> str:
         """
-        Get system prompt for chat mode.
+        Get system prompt for chat mode with codebase context.
 
         Returns:
             System prompt string
@@ -173,7 +179,82 @@ When asked to perform tasks, break them down into clear steps."""
         if self.session.system_prompt:
             return self.session.system_prompt
 
-        return self.DEFAULT_SYSTEM_PROMPT
+        # Build codebase context
+        codebase_context = self._build_codebase_context()
+
+        return self.DEFAULT_SYSTEM_PROMPT.format(
+            working_directory=self.session.working_directory,
+            codebase_context=codebase_context,
+        )
+
+    def _build_codebase_context(self) -> str:
+        """
+        Build context about the codebase in the working directory.
+
+        Returns:
+            String describing the codebase structure and key files
+        """
+        working_dir = Path(self.session.working_directory)
+        context_parts = []
+
+        # Get directory structure (top-level only to avoid overwhelming)
+        try:
+            entries = list(working_dir.iterdir())
+            dirs = sorted([e.name for e in entries if e.is_dir() and not e.name.startswith('.')])
+            files = sorted([e.name for e in entries if e.is_file() and not e.name.startswith('.')])
+
+            if dirs or files:
+                context_parts.append("## Directory Structure")
+                if dirs:
+                    context_parts.append("Directories: " + ", ".join(dirs[:15]))
+                if files:
+                    context_parts.append("Files: " + ", ".join(files[:15]))
+        except Exception:
+            pass
+
+        # Read key files for context
+        key_files = [
+            ("README.md", "Project description"),
+            ("README.rst", "Project description"),
+            ("pyproject.toml", "Python project config"),
+            ("package.json", "Node.js project config"),
+            ("Cargo.toml", "Rust project config"),
+            ("go.mod", "Go project config"),
+            ("requirements.txt", "Python dependencies"),
+        ]
+
+        for filename, description in key_files:
+            file_path = working_dir / filename
+            if file_path.exists():
+                try:
+                    content = file_path.read_text(encoding='utf-8', errors='ignore')
+                    # Truncate long files
+                    if len(content) > 2000:
+                        content = content[:2000] + "\n... (truncated)"
+                    context_parts.append(f"\n## {filename} ({description})\n```\n{content}\n```")
+                except Exception:
+                    pass
+
+        # Check for common source directories
+        src_dirs = ['src', 'lib', 'app', 'pkg', 'cmd']
+        found_src = None
+        for src_dir in src_dirs:
+            src_path = working_dir / src_dir
+            if src_path.is_dir():
+                found_src = src_dir
+                try:
+                    # List contents of source directory
+                    src_entries = list(src_path.iterdir())[:20]
+                    src_items = [e.name + ('/' if e.is_dir() else '') for e in src_entries]
+                    context_parts.append(f"\n## {src_dir}/ contents\n" + ", ".join(src_items))
+                except Exception:
+                    pass
+                break
+
+        if not context_parts:
+            return "No codebase context available in this directory."
+
+        return "\n".join(context_parts)
 
     def get_prompt(self) -> str:
         """

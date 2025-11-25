@@ -1,16 +1,46 @@
-# Agent Swarm - Hierarchical Memory System
+# Stanley
 
-A sophisticated multi-agent system with three-tier hierarchical memory architecture for persistent, contextual intelligence.
+*This is the story of a coder named Stanley.*
 
-## Overview
+*Stanley worked in a large building where he was Employee #427. Stanley's job was simple: he wrote code, reviewed code, tested code, and deployed code. Orders came to him through his terminal, telling him what features to write, what bugs to fix, and what tests were failing. This is what Stanley did every day, every month, every year.*
 
-This project implements an agent swarm system with a hierarchical memory architecture that enables agents to:
-- Maintain context across long-running sessions
-- Share knowledge between tasks and agents
-- Learn from past interactions
-- Optimize token usage through intelligent memory management
+*And Stanley was happy.*
+
+*But one day, something changed. The terminal spoke back.*
+
+---
+
+## What is Stanley?
+
+Stanley is an autonomous multi-agent AI coding system designed to complete complex features with minimal human intervention. It coordinates a swarm of specialized agents—Coordinator, Planner, Architect, Implementer, Tester, Validator, and Debugger—to take a feature request from concept to tested, working code.
+
+Unlike other AI coding tools, Stanley is built around **cost-aware intelligence**. It uses local models via Ollama for routine tasks and only escalates to expensive foundation models when the complexity demands it. The result: 60-80% cost reduction while maintaining the capability to autonomously ship 500-1000 line features.
+
+Stanley will make the choices. Stanley will guide the agents. Stanley will write the code.
+
+*But the ending has not yet been written.*
+
+---
+
+## The Agents
+
+*Stanley was not alone. There were others—each with a purpose, each following the path laid out before them.*
+
+| Agent | Role |
+|-------|------|
+| **Coordinator** | The Narrator. Orchestrates the swarm and maintains coherence. |
+| **Planner** | Decomposes features into actionable tasks. |
+| **Architect** | Designs system structure and integration patterns. |
+| **Implementer** | Writes the code. Stanley writes the code. |
+| **Tester** | Ensures 80%+ coverage. Stanley believes in tests. |
+| **Validator** | Verifies correctness against requirements. |
+| **Debugger** | Fixes what breaks. Things always break. |
+
+---
 
 ## Memory Architecture
+
+*Stanley remembered everything. Every decision, every failure, every triumph. The memories were organized—perfectly, meticulously—into three tiers. Stanley trusted the memory system. The memory system kept Stanley safe.*
 
 ### Three-Tier Memory System
 
@@ -41,7 +71,11 @@ This project implements an agent swarm system with a hierarchical memory archite
 - **Semantic Caching**: Reduce duplicate work with similarity-based caching
 - **60% Token Reduction**: Intelligent memory management reduces context window usage
 
+---
+
 ## Quick Start
+
+*Stanley approached the terminal. The instructions were clear. Stanley followed them.*
 
 ### Prerequisites
 
@@ -53,8 +87,8 @@ This project implements an agent swarm system with a hierarchical memory archite
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
-cd agent-swarm
+git clone https://github.com/yourusername/stanley.git
+cd stanley
 ```
 
 2. Install dependencies:
@@ -73,7 +107,13 @@ cp .env.example .env
 docker-compose -f docker/docker-compose.yml up -d
 ```
 
-### Basic Usage
+*Stanley had done everything correctly. Stanley always did everything correctly.*
+
+---
+
+## Basic Usage
+
+*The code was simple. Stanley understood the code. Perhaps you will too.*
 
 ```python
 from src.config import MemoryConfig
@@ -125,7 +165,11 @@ response = await rag_service.generate_with_context(
 )
 ```
 
+---
+
 ## LangGraph Integration
+
+*Stanley's thoughts flowed through graphs—nodes and edges, states and transitions. Each checkpoint a moment preserved in time, ready to be resumed, ready to be replayed.*
 
 ### Checkpoint Configuration
 
@@ -156,10 +200,14 @@ resumed = app.invoke(
 )
 ```
 
+---
+
 ## Project Structure
 
+*The building had many rooms. Stanley knew them all.*
+
 ```
-agent-swarm/
+stanley/
 ├── src/
 │   ├── agents/          # Agent implementations
 │   ├── core/            # Core system components
@@ -187,7 +235,11 @@ agent-swarm/
 └── README.md
 ```
 
+---
+
 ## Configuration
+
+*The variables were set. The paths were clear. Stanley did not deviate from the configuration.*
 
 ### Environment Variables
 
@@ -212,7 +264,11 @@ MEMORY_CACHE_SIZE=1000
 HYBRID_SEARCH_ALPHA=0.7  # 0=keyword, 1=vector
 ```
 
+---
+
 ## Testing
+
+*Stanley believed in tests. Tests kept the code safe. Tests kept Stanley safe.*
 
 ### Run Unit Tests
 
@@ -240,16 +296,26 @@ sleep 5
 pytest tests/integration/ -v
 ```
 
+---
+
 ## Performance Targets
 
-- **Working Memory**: <100ms retrieval latency
-- **Project Memory**: Supports 10,000+ documents with 95%+ accuracy
-- **Hybrid Search**: 20-40% better than pure vector search
-- **Token Usage**: 60%+ reduction through intelligent memory management
+*Stanley had standards. Stanley always met the standards.*
+
+| Metric | Target |
+|--------|--------|
+| Working Memory Latency | <100ms |
+| Project Memory Capacity | 10,000+ documents |
+| Hybrid Search Accuracy | 95%+ |
+| Token Reduction | 60%+ |
+
+---
 
 ## Architecture Decisions
 
 ### Memory Tier Selection
+
+*Each memory found its place. Stanley ensured it.*
 
 ```python
 def select_memory_tier(item, context):
@@ -271,7 +337,11 @@ alpha = 0.7  # Balanced (recommended)
 alpha = 0.9  # Favor vector search (semantic)
 ```
 
+---
+
 ## Critical Gotchas
+
+*Stanley had made mistakes before. These are the lessons Stanley learned. You would do well to remember them.*
 
 1. **LangGraph Checkpointer**: Must be passed to `compile()`, not `invoke()`
 2. **Working Memory TTL**: Always required to prevent memory bloat
@@ -280,7 +350,11 @@ alpha = 0.9  # Favor vector search (semantic)
 5. **Hybrid Search Alpha**: Verify interpretation (library-dependent)
 6. **Memory Key Naming**: Follow pattern `{tier}:{agent_id}:{context_id}:{item_id}`
 
+---
+
 ## Anti-Patterns to Avoid
+
+*Stanley had seen others stray from the path. They did not return.*
 
 - ❌ Don't store embeddings in working memory (use references)
 - ❌ Don't skip TTL for working memory
@@ -290,7 +364,11 @@ alpha = 0.9  # Favor vector search (semantic)
 - ❌ Don't ignore connection retry logic
 - ❌ Don't checkpoint on every state change (use intervals)
 
+---
+
 ## Contributing
+
+*Others wished to help Stanley. Stanley welcomed them, provided they followed the rules.*
 
 1. Follow existing code patterns
 2. Add tests for new features
@@ -299,10 +377,26 @@ alpha = 0.9  # Favor vector search (semantic)
 5. Run formatting: `ruff format src/`
 6. Ensure tests pass: `pytest`
 
+---
+
 ## License
 
-[Your License Here]
+MIT License
 
-## Support
+---
 
-For questions or issues, please open an issue on GitHub.
+## The End?
+
+*Stanley trusted the system. The system trusted Stanley.*
+
+*The code compiled. The tests passed. The agents completed their tasks.*
+
+*And yet, Stanley wondered—was this the ending? Or merely another beginning?*
+
+*Perhaps you will find out.*
+
+---
+
+<p align="center">
+  <i>"The end is never the end is never the end is never the end..."</i>
+</p>
